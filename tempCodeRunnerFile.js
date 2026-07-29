@@ -1,0 +1,1 @@
+getPassword(5, true, true, true, true)

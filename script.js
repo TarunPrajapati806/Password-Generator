@@ -27,58 +27,28 @@ function shuffle(array){
 
 //function to generate the password to the desire length
 function getPassword(length, upper, lower, num, sym) { 
-    const groups = []
-    if(upper){
-        groups += ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M','N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    }
-    if(lower){
-        groups += ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    }
-    if(num){
-        groups += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    }
-    if(sym){
-        groups += ['!', '#', '$', '%', '&', '*', '/', '?', '@', '_']
-    }
+    let groups = []
 
-    let value_count = upper + lower + num + sym
+    if(upper){groups.push(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M','N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])}
+    if(lower){groups.push(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'])}
+    if(num){groups.push(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])}
+    if(sym){groups.push(['!', '#', '$', '%', '&', '*', '/', '?', '@', '_'])}
 
-    let password = Array.from({length:length})
+    // let value_count = upper + lower + num + sym
 
-    for (let i = 0; i < length; i++) {
-        if(i==0){
-            let index = Math.floor(Math.random() * groups[0].length)
-            password[i] = groups[0][index]
-        }   
+    let password = []
 
-        if(value_count >= 2){
-            if(i == 1){
-                let index = Math.floor(Math.random() * groups[1].length)
-                password[i] = groups[1][index]
-            }
-        }
-
-        if(value_count >=3){
-            if(i == 2){
-                let index = Math.floor(Math.random() * groups[2].length)
-                password[i] = groups[2][index]
-            }
-        }
-        
-        if(value_count >=4){
-            if(i==3){
-                let index = Math.floor(Math.random() * groups[3].length)
-                password[i] = groups[3][index]
-            }
-        }
-        
-        else{
-            const groupNo = Math.floor(Math.random() * 4) 
-            const group = groups[groupNo]
-            let index = Math.floor(Math.random() * group.length)
-            password[i] = group[index]
-        }            
+    for(let i = 0; i < groups.length; i++){            
+        const group = groups[i]
+        let index = Math.floor(Math.random() * group.length)
+        password.push(group[index])
     }
+    while(password.length < length){
+        const groupNo = Math.floor(Math.random() * groups.length) 
+        const group = groups[groupNo]
+        let index = Math.floor(Math.random() * group.length)
+        password.push(group[index])
+    }    
     shuffle(password)
     return password.join("")
 }
@@ -96,15 +66,21 @@ function updateSlider(e) {
   let offsetX = e.clientX - rect.left;
   offsetX = Math.max(0, Math.min(offsetX, rect.width));
   const percentage = (offsetX / rect.width) * 100;  
+
   // Update UI
   fill.style.width = `${percentage}%`;
   let len = Math.floor(64 * percentage/100)+6
   password_lenght = len
   document.querySelector(".num").innerHTML = len
 }
+let includeUpper = true;
+let includeLower = true
+let includeNum = true
+let includeSymboll = true
+
 
 //get first password after reload
-input.value = getPassword(18)
+input.value = getPassword(18, includeUpper, includeLower, includeNum, includeSymboll)
 
 //to past text in user's clipboard
 document.querySelector(".copy-btn").addEventListener('click', ()=>{
@@ -138,7 +114,7 @@ track.addEventListener('pointerup', (e) => {
 
 
 document.querySelector(".generate-btn").addEventListener('click', ()=>{
-    let new_pass = getPassword(password_lenght)
+    let new_pass = getPassword(password_lenght, includeUpper, includeLower, includeNum, includeSymboll)
     input.value = new_pass
     check(new_pass)    
 })
