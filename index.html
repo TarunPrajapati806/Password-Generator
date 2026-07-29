@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator by Tarun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">        
+        <nav>
+            <div class="title">
+                <div class="circle"></div>
+                <div class="dev">Password Generator</div>
+            </div>    
+            <span class="top-theme">theme button</span>        
+        </nav>
+        <div class="sections">
+            <section class="section">                
+                <div class="first-text">PASSWORD</div>
+                <div class="input">                    
+                    <input type="text" class="password" placeholder="Enter Your Password Here to Check Strentgh">
+                    <div class="copy-btn">                        
+                        Copy
+                    </div>
+                </div>
+                <div class="strength">
+                    <div class="text-section">
+                        <div class="heading">STRENGTH</div>
+                        <div class="fortess">FORTRESS</div>
+                    </div>
+                    <div class="strips">
+                        <div class="strip"></div>
+                        <div class="strip"></div>
+                        <div class="strip"></div>
+                        <div class="strip"></div>
+                        <div class="strip"></div>
+                    </div>
+                </div>
+                <div class="checkpoints">
+                    <div class="point">
+                        <img src="svg/check.svg" alt="" class="check" id="characters12">
+                        <span>12+ Characters</span>
+                    </div>
+                    <div class="point">
+                        <img src="svg/check.svg" alt="" class="check" id="upper">
+                        <span>Uppercase Letter</span>
+                    </div>
+                    <div class="point">
+                        <img src="svg/check.svg" alt="" class="check" id="lower">
+                        <span>Lowercase Letter</span>
+                    </div>
+                    <div class="point">
+                        <img src="svg/check.svg" alt="" class="check" id="digit">
+                        <span>Number</span>
+                    </div>
+                    <div class="point">
+                        <img src="svg/check.svg" alt="" class="check" id="special">
+                        <span>Symbol</span>
+                    </div>
+                </div>
+            </section>
+            <section class="section">                
+                <div class="length">
+                    <div class="upper">
+                        <div class="len-txt">Length</div>
+                        <div class="num">32</div>
+                    </div>                
+                    <div class="line">
+                        <div class="line line-color">
+                            <div class="circle-icon"></div>
+                        </div>
+                    </div>
+                    <div class="range">
+                        <div class="num1">6</div>
+                        <div class="num1">70</div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="btn">
+                        <div class="swap-btn">                        
+                            <div class="swap"></div>
+                        </div>
+                        <span class="text">UPPERCASE</span>
+                    </div>
+                    <div class="btn">
+                        <div class="swap-btn">                        
+                            <div class="swap"></div>
+                        </div>
+                        <span class="text">LOWERCASE</span>
+                    </div>
+                    <div class="btn">
+                        <div class="swap-btn">                        
+                            <div class="swap"></div>
+                        </div>
+                        <span class="text">NUMBERS</span>
+                    </div>
+                    <div class="btn">
+                        <div class="swap-btn">                        
+                            <div class="swap"></div>
+                        </div>
+                        <span class="text">SYMBOLLS</span>
+                    </div>
+                </div>
+                <div class="end-btns">
+                    <button class="generate-btn end">GENERATE</button>
+                    <button class="check-btn end">CHECK</button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
