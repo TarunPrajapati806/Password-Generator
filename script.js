@@ -87,7 +87,7 @@ document.querySelectorAll(".swap-btn").forEach(btn=>{
         const id = btn.id;
         options[id] = ! options[id]
 
-        btn.querySelector(".swap").style.right = options[id] ? "4px":"22px";
+        btn.querySelector(".swap").style.right = options[id] ? "4px":"21px";
         btn.style.backgroundColor = options[id] ? "var(--blue)":"var(--grey-o-black)";
         btn.style.boxShadow = options[id] ? "0 0 7px 0px rgb(100 210 255 / 70%)":"none";
     })
@@ -171,7 +171,7 @@ function check(string) {
     })
 
     //strips color changeing
-    allStrips = Array.from(document.querySelectorAll(".strip"))  
+    allStrips = Array.from(document.querySelectorAll(".strip")) 
 
     
     if(trueCount==2){
@@ -191,7 +191,7 @@ function check(string) {
     }
     else if(trueCount==5){
         document.documentElement.style.setProperty('--change', "rgb(100 210 255)")
-        document.querySelector(".fortess").innerHTML = "FORTESS"        
+        document.querySelector(".fortess").innerHTML = "FORTRESS"        
         document.querySelector(".input").style.boxShadow = "rgb(100 210 255 / 40%) 0px 0px 10px 3px"
     }  
     else{            
