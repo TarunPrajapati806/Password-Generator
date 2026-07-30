@@ -73,23 +73,40 @@ function updateSlider(e) {
   password_lenght = len
   document.querySelector(".num").innerHTML = len
 }
-let includeUpper = true;
-let includeLower = true
-let includeNum = true
-let includeSymboll = true
+
+const options = {
+    includeUpper : true,
+    includeLower : true,
+    includeNum : true,
+    includeSymboll : true
+};
+
+//setting includ buttns
+document.querySelectorAll(".swap-btn").forEach(btn=>{
+    btn.addEventListener('click', ()=>{        
+        const id = btn.id;
+        options[id] = ! options[id]
+
+        btn.querySelector(".swap").style.right = options[id] ? "4px":"22px";
+        btn.style.backgroundColor = options[id] ? "var(--blue)":"var(--grey-o-black)";
+        btn.style.boxShadow = options[id] ? "0 0 7px 0px rgb(100 210 255 / 70%)":"none";
+    })
+})
+
 
 
 //get first password after reload
-input.value = getPassword(18, includeUpper, includeLower, includeNum, includeSymboll)
+input.value = getPassword(password_lenght, options.includeUpper, options.includeLower, options.includeNum, options.includeSymboll)
 
 //to past text in user's clipboard
 document.querySelector(".copy-btn").addEventListener('click', ()=>{
     let password = input.value;
     navigator.clipboard.writeText(password);    
-    document.querySelector(".copy-btn").innerHTML = `<img src="svg/tick.svg" alt="tick" class="tick">`
+    document.querySelector(".copy-btn").innerHTML = `<span>Copied!</span>
+                        <img src="svg/tick.svg" alt="tick" class="tick">`
     setTimeout(() => {
         document.querySelector(".copy-btn").innerHTML = "Copy"
-    }, 3000);
+    }, 1500);
 })
 
 track.addEventListener('pointerdown', (e) => {
@@ -114,7 +131,7 @@ track.addEventListener('pointerup', (e) => {
 
 
 document.querySelector(".generate-btn").addEventListener('click', ()=>{
-    let new_pass = getPassword(password_lenght, includeUpper, includeLower, includeNum, includeSymboll)
+    let new_pass = getPassword(password_lenght, options.includeUpper, options.includeLower, options.includeNum, options.includeSymboll)
     input.value = new_pass
     check(new_pass)    
 })
@@ -191,13 +208,6 @@ function check(string) {
         strip.style.backgroundColor = "#484848"
     })
 }
-
-
-document.querySelector(".check-btn").addEventListener('click', ()=>{
-    let password = input.value
-    check(password)
-    
-})
 
 document.querySelector(".password").addEventListener('input', ()=>{
     let password = input.value

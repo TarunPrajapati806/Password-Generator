@@ -7,17 +7,11 @@
 }
 
 input {
-    appearance: none;
-    /* Removes native OS styling */
-    outline: none;
-    /* Removes default glow on focus */
-    border: none;
-    /* Removes default gray border */
-    background: none;
-    /* Clears default background color */
-    box-sizing: border-box;
-    /* Includes padding in overall width */
-}
+    appearance: none;    
+    outline: none;    
+    border: none;    
+    background: none;    
+    box-sizing: border-box;}
 
 * {
     margin: 0;
@@ -119,9 +113,9 @@ nav {
     padding: 3px 11px;
     font-size: 14px;
     color: rgb(84 84 84);
-    cursor: pointer;
-    width: 57px;
+    cursor: pointer;    
     height: 27px;
+    gap: 5px; 
     caret-color: transparent;
 }
 
@@ -281,6 +275,7 @@ nav {
     height: 18px;
     cursor: pointer;
     box-shadow: 0 0 7px 0px rgb(100 210 255 / 70%);
+    transition: all 0.3s ease-in-out;
 }
 
 .swap-btn .swap {
@@ -291,7 +286,7 @@ nav {
     border-radius: 20px;
     position: absolute;
     right: 4px;
-    transition: all 0.25s linear;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn .text {
