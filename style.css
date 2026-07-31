@@ -1,34 +1,136 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root {
+/* =========================================================
+   THEME CONFIGURATION
+   ========================================================= */
+
+/* Default / Dark Theme (Preserves original styling 100%) */
+:root,
+[data-theme="dark"] {
     --blue: rgb(100 210 255);
     --grey-o-black: #484848;
-    --change: rgb(100 210 255)
+    --change: rgb(100 210 255);
+
+    --bg-color: transparent;
+    --bg-image: url(images/black-bg.png);
+    --bg-grid: none;
+
+    --nav-title: #ffffff;
+    --nav-circle-bg: black;
+    --nav-circle-border: none;
+    --nav-circle-shadow: 0 0 10px 2px var(--blue);
+
+    --section-bg: #141414;
+    --section-border: 1px solid #343434;
+    --section-shadow: 0 0 16px 6px black;
+
+    --text-sub: #484848;
+    --text-main: #ffffff;
+
+    --input-bg: rgb(13 13 13);
+    --input-border: 1px solid var(--change);
+    --input-shadow: rgb(100 210 255 / 40%) 0px 0px 10px 3px;
+
+    --copy-bg: rgb(26, 26, 26);
+    --copy-border: 1px solid rgb(40, 40, 40);
+    --copy-text: rgb(84 84 84);
+
+    --line-bg: #484848;
+
+    --swap-bg: var(--blue);
+    --swap-circle: black;
+    --swap-shadow: 0 0 7px 0px rgb(100 210 255 / 70%);
+
+    --btn-end-bg: linear-gradient(135deg, rgba(100, 210, 255, 0.094), rgba(100, 210, 255, 0.03));
+    --btn-end-border: 1px solid rgba(100, 210, 255, 0.25);
+    --btn-end-color: rgb(100, 210, 255);
+    --btn-end-shadow: rgb(100 210 255 / 6%) 0px 0px 20px;
+
+    --check-filter: none;
+    --theme-btn-bg: transparent;
+    --theme-btn-border: none;
+    --theme-btn-shadow: none;
 }
+
+/* Light Theme (Derived directly from reference image) */
+[data-theme="light"] {
+    --blue: #1d6bf3;
+    --grey-o-black: #64748b;
+    --change: #1d6bf3;
+
+    --bg-color: #f8fafc;
+    --bg-image: url(images/white-bg.png);
+    --bg-grid: 
+        linear-gradient(to right, rgba(226, 232, 240, 0.8) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.8) 1px, transparent 1px);
+
+    --nav-title: #1e293b;
+    --nav-circle-bg: #ffffff;
+    --nav-circle-border: 3px solid #1d6bf3;
+    --nav-circle-shadow: none;
+
+    --section-bg: #ffffff;
+    --section-border: 1px solid #f1f5f9;
+    --section-shadow: 0 10px 30px -5px rgb(0 0 0 / 20%), 0 4px 12px -2px rgb(0 0 0 / 26%);
+
+    --text-sub: #64748b;
+    --text-main: #1e293b;
+
+    --input-bg: #ffffff;
+    --input-border: 1.5px solid #1d6bf3;
+    --input-shadow: none;
+
+    --copy-bg: #f0f6ff;
+    --copy-border: 1px solid #dbeaf2;
+    --copy-text: #1d6bf3;
+
+    --line-bg: #e2e8f0;
+
+    --swap-bg: #1d6bf3;
+    --swap-circle: #ffffff;
+    --swap-shadow: none;
+
+    --btn-end-bg: #1d6bf3;
+    --btn-end-border: 1px solid #1d6bf3;
+    --btn-end-color: #ffffff;
+    --btn-end-shadow: 0 4px 14px 0 rgba(29, 107, 243, 0.35);
+
+    /* Blue tint filter for check icons in light mode */
+    --check-filter: invert(31%) sepia(93%) saturate(1998%) hue-rotate(209deg) brightness(97%) contrast(96%);
+    --theme-btn-bg: #ffffff;
+    --theme-btn-border: 1px solid #e2e8f0;
+    --theme-btn-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   BASE STYLES
+   ========================================================= */
 
 input {
     appearance: none;    
     outline: none;    
     border: none;    
     background: none;    
-    box-sizing: border-box;}
+    box-sizing: border-box;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "JetBrains Mono", monospace;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .container {
     position: relative;
     background-attachment: fixed;
-    /* width: 100%;*/
     min-height: 100vh;
-    background-image: url(images/background.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: var(--bg-color);
+    background-image: var(--bg-image), var(--bg-grid);
+    background-size: cover, 24px 24px;
+    background-repeat: no-repeat, repeat;
+    background-position: center, center;
 }
 
 nav {
@@ -41,9 +143,10 @@ nav {
 .circle {
     width: 20px;
     height: 20px;
-    background-color: black;
+    background-color: var(--nav-circle-bg);
     border-radius: 24px;
-    box-shadow: 0 0 10px 2px var(--blue);
+    border: var(--nav-circle-border);
+    box-shadow: var(--nav-circle-shadow);
 }
 
 .title {
@@ -54,19 +157,27 @@ nav {
 
 .dev {
     font-weight: 700;
-    color: white;
+    color: var(--nav-title);
     font-size: 18px;
 }
 
-.top-theme{
+.top-theme {
     cursor: pointer;
+    background-color: var(--theme-btn-bg);
+    border: var(--theme-btn-border);
+    box-shadow: var(--theme-btn-shadow);
+    border-radius: 50%;
+    padding: 4px;
+    box-sizing: content-box;
 }
-.main-box{
+
+.main-box {
     display: flex;
     align-items: center;
     justify-content: center;    
     min-height: 90vh;    
 }
+
 .sections {    
     display: flex;
     flex-direction: column;
@@ -79,14 +190,14 @@ nav {
     padding: 30px;
     width: max(400px, 42vw);
     height: auto;
-    background-color: #141414;
+    background-color: var(--section-bg);
     border-radius: 25px;
-    border: 1px solid #343434;
-    box-shadow: 0 0 16px 6px black
+    border: var(--section-border);
+    box-shadow: var(--section-shadow);
 }
 
 .first-text {
-    color: #484848;
+    color: var(--text-sub);
     font-size: 14px;
     padding-bottom: 12px;
 }
@@ -97,29 +208,29 @@ nav {
     align-items: center;
     padding: 8px 9px;
     width: 99%;
-    background-color: rgb(13 13 13);
-    color: white;
+    background-color: var(--input-bg);
+    color: var(--text-main);
     margin: auto;
-    border: 1px solid var(--change);
+    border: var(--input-border);
     border-radius: 5px;
-    box-shadow: rgb(100 210 255 / 40%) 0px 0px 10px 3px;
-    transition: all 0.3s ease-in-out;
+    box-shadow: var(--input-shadow);
 }
 
 .copy-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(26, 26, 26);
-    border: 1px solid rgb(40, 40, 40);
+    background-color: var(--copy-bg);
+    border: var(--copy-border);
     border-radius: 3px;
     padding: 3px 11px;
     font-size: 14px;
-    color: rgb(84 84 84);
+    color: var(--copy-text);
     cursor: pointer;    
     height: 27px;
     gap: 5px; 
     caret-color: transparent;
+    font-weight: 500;
 }
 
 .copy-btn .tick {
@@ -128,17 +239,17 @@ nav {
 
 .password {
     padding-left: 5px;
-    background-color: rgb(13 13 13);
-    color: white;
+    background-color: transparent;
+    color: var(--text-main);
     font-size: 16px;
     width: 85%;
-    ;
     font-weight: 200;
     text-overflow: ellipsis;
 }
 
 .password::placeholder {
     font-size: 14px;
+    color: var(--text-sub);
 }
 
 .strength {
@@ -152,13 +263,13 @@ nav {
 }
 
 .strength .heading {
-    color: #484848;
+    color: var(--text-sub);
     font-size: 14px;
 }
 
 .strength .fortess {
     color: var(--change);
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14px;
 }
 
@@ -181,6 +292,7 @@ nav {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding-top: 20px;
+    gap: 10px 0;
 }
 
 .point {
@@ -188,11 +300,15 @@ nav {
     align-items: center;
 }
 
-.point>span {
+.point .check {
+    filter: var(--check-filter);
+}
+
+.point > span {
     font-size: 13px;
     color: var(--grey-o-black);
     font-weight: 500;
-    padding-left: 4px;
+    padding-left: 6px;
 }
 
 .upper {
@@ -202,7 +318,7 @@ nav {
 }
 
 .len-txt {
-    color: #484848;
+    color: var(--text-sub);
     font-size: 14px;
 }
 
@@ -214,7 +330,7 @@ nav {
 
 .line {
     position: relative;
-    background-color: var(--grey-o-black);
+    background-color: var(--line-bg);
     width: 100%;
     height: 4px;
     border-radius: 10px;
@@ -251,7 +367,7 @@ nav {
 }
 
 .num1 {
-    color: #484848;
+    color: var(--text-sub);
     font-size: 14px;
 }
 
@@ -269,7 +385,7 @@ nav {
 }
 
 .swap-btn {
-    background-color: var(--blue);
+    background-color: var(--swap-bg);
     position: relative;
     display: flex;
     align-items: center;
@@ -277,14 +393,14 @@ nav {
     width: 40px;
     height: 18px;
     cursor: pointer;
-    box-shadow: 0 0 7px 0px rgb(100 210 255 / 70%);
+    box-shadow: var(--swap-shadow);
     transition: all 0.3s ease-in-out;
 }
 
 .swap-btn .swap {
     width: 14px;
     height: 14px;
-    background-color: black;
+    background-color: var(--swap-circle);
     border: none;
     border-radius: 20px;
     position: absolute;
@@ -294,7 +410,7 @@ nav {
 
 .btn .text {
     font-size: 14px;
-    color: #ffffff;
+    color: var(--text-main);
     font-weight: 500;
     padding-left: 4px;
 }
@@ -307,60 +423,54 @@ nav {
 }
 
 .end {
-    background: linear-gradient(135deg, rgba(100, 210, 255, 0.094), rgba(100, 210, 255, 0.03));
-    border: 1px solid rgba(100, 210, 255, 0.25);
-    color: rgb(100, 210, 255);
+    background: var(--btn-end-bg);
+    border: var(--btn-end-border);
+    color: var(--btn-end-color);
     font-family: "JetBrains Mono", monospace;
-    box-shadow: rgb(100 210 255 / 6%) 0px 0px 20px;
-    padding: 6px 0;
+    box-shadow: var(--btn-end-shadow);
+    padding: 10px 0;
     font-size: 16px;
-    border-radius: 5px;
+    font-weight: 600;
+    border-radius: 8px;
     text-align: center;
     cursor: pointer;
     width: -webkit-fill-available;
 }
 
-.check-btn {
-    background: linear-gradient(135deg, rgb(100 255 169 / 9%), rgba(100, 210, 255, 0.03));
-    border: 1px solid rgb(110 255 100 / 25%);
-    color: rgb(100 255 133);
-}
-
 .end:hover {
-    filter: brightness(1.3);
+    filter: brightness(1.1);
 }
-
 
 @media(max-width:480px){
-    .checkpoints{
+    .checkpoints {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .circle{
+    .circle {
         width: 15px;
         height: 15px;
     }
 
-    .dev{
+    .dev {
         font-size: 15px;
     }
 
-    .section{
-        width:80vw;
+    .section {
+        width: 85vw;
         padding: 20px;
     }
-    .swap-btn{
+
+    .swap-btn {
         width: 36px;
         height: 16px;
     }
     
-    .swap-btn .swap{
+    .swap-btn .swap {
         width: 12px;
-        height:12px;
+        height: 12px;
     }
     
-
-    nav{
+    nav {
         padding: 32px 35px 0px 35px;
     }
 }

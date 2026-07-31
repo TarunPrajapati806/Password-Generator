@@ -138,10 +138,10 @@ document.querySelector(".generate-btn").addEventListener('click', ()=>{
 
 function iconchange(lineName, bool){
     if(bool){
-        document.getElementById(lineName).src = "svg/check.svg"
+        document.getElementById(lineName).style.opacity = "100%"
     }
     else{
-        document.getElementById(lineName).src = "svg/dull-check.svg"
+        document.getElementById(lineName).style.opacity = "25%"
     }
 }
 
@@ -212,5 +212,17 @@ function check(string) {
 document.querySelector(".password").addEventListener('input', ()=>{
     let password = input.value
     check(password)
+})
+
+//theme changing functionlity
+const body = document.documentElement;
+
+document.querySelector(".top-theme").addEventListener('click', ()=>{
+    if(body.dataset.theme==="dark"){
+        body.dataset.theme="light";
+    }
+    else{
+        body.dataset.theme="dark";
+    }
 })
 
