@@ -14,7 +14,7 @@
     --password-font-weight: 200;
     --strip-without-color: #484848;
     --bg-color: transparent;
-    --bg-image: url(images/black-bg.png);
+    --bg-image: url(images/black-bg.jpg);
     --bg-grid: none;
 
     --nav-title: #ffffff;
@@ -65,7 +65,7 @@
     --nav-title-bg : white;    
     --strip-without-color : rgb(72 72 72 / 27%);
     --bg-color: #f8fafc;
-    --bg-image: url(images/white-bg.png);
+    --bg-image: url(images/white-bg.jpg);
     --bg-grid: 
         linear-gradient(to right, rgba(226, 232, 240, 0.8) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(226, 232, 240, 0.8) 1px, transparent 1px);
