@@ -205,7 +205,7 @@ function check(string) {
         strip.style.backgroundColor = "var(--change)"        
     })
     allStrips.slice(trueCount, 6).forEach(strip=>{
-        strip.style.backgroundColor = "#484848"
+        strip.style.backgroundColor = "var(--strip-without-color)"
     })
 }
 
