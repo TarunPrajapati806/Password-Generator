@@ -56,7 +56,7 @@ function getPassword(length, upper, lower, num, sym) {
 let password_lenght = 32;
 let track = document.querySelector(".line")
 let fill = document.querySelector(".line-color")
-let isDragging = false;
+
 
 const input = document.querySelector(".password")
 
@@ -109,24 +109,25 @@ document.querySelector(".copy-btn").addEventListener('click', ()=>{
     }, 1500);
 })
 
-track.addEventListener('pointerdown', (e) => {
+let isDragging = false;
+
+track.addEventListener("pointerdown", (e) => {
     isDragging = true;
-    track.setPointerCapture(e.pointerId); // Keeps listening even if pointer leaves element
     updateSlider(e);
 });
-  
-track.addEventListener('pointermove', (e) => {
-    if (isDragging) {
-      updateSlider(e);
-    }
-});
-  
-track.addEventListener('pointerup', (e) => {
-    isDragging = false;
-    track.releasePointerCapture(e.pointerId);
+
+window.addEventListener("pointermove", (e) => {
+    if (!isDragging) return;
+    updateSlider(e);
 });
 
-//setting the input optinos means what characters should be include
+window.addEventListener("pointerup", () => {
+    isDragging = false;
+});
+
+window.addEventListener("pointercancel", () => {
+    isDragging = false;
+});
 
 
 
@@ -226,3 +227,6 @@ document.querySelector(".top-theme").addEventListener('click', ()=>{
     }
 })
 
+track.addEventListener("pointercancel", () => {
+    isDragging = false;
+});
