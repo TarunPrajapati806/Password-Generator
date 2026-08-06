@@ -230,3 +230,14 @@ document.querySelector(".top-theme").addEventListener('click', ()=>{
 track.addEventListener("pointercancel", () => {
     isDragging = false;
 });
+
+const currentYear = new Date().getFullYear();
+document.querySelector(".copyright").getElementsByTagName("div").innerHTML = `${currentYear} Tarun Prajapati. All rights reserved.`
+
+//to get info after clicking on about
+document.querySelector(".text").addEventListener('click', ()=>{
+    document.querySelector(".copyright").scrollIntoView({
+        behavior:'smooth',
+        block:'end'
+    })
+})
