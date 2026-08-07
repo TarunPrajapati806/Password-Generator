@@ -235,7 +235,7 @@ const currentYear = new Date().getFullYear();
 document.querySelector(".copyright").getElementsByTagName("div").innerHTML = `${currentYear} Tarun Prajapati. All rights reserved.`
 
 //to get info after clicking on about
-document.querySelector(".text").addEventListener('click', ()=>{
+document.querySelector(".about").addEventListener('click', ()=>{
     document.querySelector(".copyright").scrollIntoView({
         behavior:'smooth',
         block:'end'
